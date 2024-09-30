@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Ciberseguridad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        h1, h3 {
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Botón para cambiar tema -->
+    <button class="theme-toggle" onclick="cambiarTema()">Cambiar a tema oscuro</button>
+
+    <!-- Página de bienvenida -->
+    <div id="inicio">
+        <h1>Bienvenido al Test de Ciberseguridad</h1>
+        <h3>Descubre cuál es tu posible enfoque dentro de la ciberseguridad</h3>
+        <button onclick="iniciarTest()">Iniciar Test</button>
+    </div>
+
+ <!-- Pregunta 1 -->
+<div id="pregunta1" class="hidden">
+    <h3>¿Qué aspecto de la ciberseguridad te interesa más?</h3>
+    <button onclick="responder('pregunta1', 'redes', 'pregunta2')">Asegurar redes y sistemas</button>
+    <button onclick="responder('pregunta1', 'pentesting', 'pregunta2')">Encontrar vulnerabilidades en aplicaciones y sistemas</button>
+    <button onclick="responder('pregunta1', 'forense', 'pregunta2')">Investigar y analizar incidentes después de un ataque</button>
+    <button onclick="responder('pregunta1', 'criptografia', 'pregunta2')">Proteger la información mediante cifrado y ocultación</button>
+    <button onclick="responder('pregunta1', 'codigo', 'pregunta2')">Desarrollar software seguro</button>
+    <button onclick="responder('pregunta1', 'ciberinteligencia', 'pregunta2')">Recopilar datos para identificar amenazas</button>
+    <button onclick="responder('pregunta1', 'malware', 'pregunta2')">Analizar y prevenir ataques de malware</button>
+    <button onclick="responder('pregunta1', 'infosec', 'pregunta2')">Establecer políticas de seguridad para proteger la información</button>
+</div>
+
+<!-- Pregunta 2 -->
+<div id="pregunta2" class="hidden">
+    <h3>¿Te gusta más trabajar con...?</h3>
+    <button onclick="responder('pregunta2', 'redes', 'pregunta3')">Redes y comunicación de datos</button>
+    <button onclick="responder('pregunta2', 'pentesting', 'pregunta3')">Simular ataques para encontrar vulnerabilidades</button>
+    <button onclick="responder('pregunta2', 'forense', 'pregunta3')">Investigación post-ataque</button>
+    <button onclick="responder('pregunta2', 'criptografia', 'pregunta3')">Cifrado y ocultación de información</button>
+    <button onclick="responder('pregunta2', 'codigo', 'pregunta3')">Revisión y mejora de código fuente</button>
+    <button onclick="responder('pregunta2', 'ciberinteligencia', 'pregunta3')">Datos e investigaciones para prevenir amenazas</button>
+    <button onclick="responder('pregunta2', 'malware', 'pregunta3')">Estudio del comportamiento de malware</button>
+    <button onclick="responder('pregunta2', 'infosec', 'pregunta3')">Implementación de políticas y auditorías de seguridad</button>
+</div>
+
+<!-- Pregunta 3 -->
+<div id="pregunta3" class="hidden">
+    <h3>¿Qué prefieres hacer en tu día a día?</h3>
+    <button onclick="responder('pregunta3', 'redes', 'pregunta4')">Configurar y monitorear redes seguras</button>
+    <button onclick="responder('pregunta3', 'pentesting', 'pregunta4')">Realizar pruebas de penetración en sistemas</button>
+    <button onclick="responder('pregunta3', 'forense', 'pregunta4')">Investigar cómo ocurrió un ataque</button>
+    <button onclick="responder('pregunta3', 'criptografia', 'pregunta4')">Asegurar que la información esté cifrada</button>
+    <button onclick="responder('pregunta3', 'codigo', 'pregunta4')">Escribir y corregir código seguro</button>
+    <button onclick="responder('pregunta3', 'ciberinteligencia', 'pregunta4')">Analizar datos para predecir amenazas</button>
+    <button onclick="responder('pregunta3', 'malware', 'pregunta4')">Prevenir y analizar malware</button>
+    <button onclick="responder('pregunta3', 'infosec', 'pregunta4')">Monitorear y auditar políticas de seguridad</button>
+</div>
+
+<!-- Pregunta 4 -->
+<div id="pregunta4" class="hidden">
+    <h3>¿Te atrae más el trabajo en...?</h3>
+    <button onclick="responder('pregunta4', 'redes', 'pregunta5')">Protección de redes y sistemas en tiempo real</button>
+    <button onclick="responder('pregunta4', 'pentesting', 'pregunta5')">Simulación de ataques para encontrar fallos</button>
+    <button onclick="responder('pregunta4', 'forense', 'pregunta5')">Analizar registros y eventos después de un ataque</button>
+    <button onclick="responder('pregunta4', 'criptografia', 'pregunta5')">Desarrollar algoritmos y soluciones criptográficas</button>
+    <button onclick="responder('pregunta4', 'codigo', 'pregunta5')">Corregir vulnerabilidades en código</button>
+    <button onclick="responder('pregunta4', 'ciberinteligencia', 'pregunta5')">Analizar grandes volúmenes de datos</button>
+    <button onclick="responder('pregunta4', 'malware', 'pregunta5')">Estudiar la propagación de malware</button>
+    <button onclick="responder('pregunta4', 'infosec', 'pregunta5')">Monitoreo de cumplimiento de políticas de seguridad</button>
+</div>
+
+<!-- Pregunta 5 -->
+<div id="pregunta5" class="hidden">
+    <h3>¿Qué tipo de habilidades te interesan más aprender?</h3>
+    <button onclick="responder('pregunta5', 'redes', 'pregunta6')">Configuración y monitoreo de redes seguras</button>
+    <button onclick="responder('pregunta5', 'pentesting', 'pregunta6')">Técnicas de hacking ético</button>
+    <button onclick="responder('pregunta5', 'forense', 'pregunta6')">Investigación forense después de un ataque</button>
+    <button onclick="responder('pregunta5', 'criptografia', 'pregunta6')">Creación de algoritmos criptográficos</button>
+    <button onclick="responder('pregunta5', 'codigo', 'pregunta6')">Desarrollo de código seguro</button>
+    <button onclick="responder('pregunta5', 'ciberinteligencia', 'pregunta6')">Análisis predictivo de amenazas</button>
+    <button onclick="responder('pregunta5', 'malware', 'pregunta6')">Análisis del comportamiento del malware</button>
+    <button onclick="responder('pregunta5', 'infosec', 'pregunta6')">Implementación de políticas de seguridad en empresas</button>
+</div>
+
+<!-- Pregunta 6 -->
+<div id="pregunta6" class="hidden">
+    <h3>¿Te sientes más cómodo con...?</h3>
+    <button onclick="responder('pregunta6', 'redes', 'pregunta7')">Resolver problemas de red en tiempo real</button>
+    <button onclick="responder('pregunta6', 'pentesting', 'pregunta7')">Revisar y corregir vulnerabilidades en sistemas</button>
+    <button onclick="responder('pregunta6', 'forense', 'pregunta7')">Analizar eventos después de un ataque</button>
+    <button onclick="responder('pregunta6', 'criptografia', 'pregunta7')">Evaluar sistemas criptográficos</button>
+    <button onclick="responder('pregunta6', 'codigo', 'pregunta7')">Corregir vulnerabilidades de código</button>
+    <button onclick="responder('pregunta6', 'ciberinteligencia', 'pregunta7')">Analizar grandes volúmenes de datos</button>
+    <button onclick="responder('pregunta6', 'malware', 'pregunta7')">Detectar y eliminar malware</button>
+    <button onclick="responder('pregunta6', 'infosec', 'pregunta7')">Implementar y revisar políticas de seguridad</button>
+</div>
+
+<!-- Pregunta 7 -->
+<div id="pregunta7" class="hidden">
+    <h3>¿Qué área consideras más crítica para la seguridad de una empresa?</h3>
+    <button onclick="responder('pregunta7', 'redes', 'pregunta8')">La seguridad de las redes</button>
+    <button onclick="responder('pregunta7', 'pentesting', 'pregunta8')">La protección contra vulnerabilidades</button>
+    <button onclick="responder('pregunta7', 'forense', 'pregunta8')">La capacidad de investigar ataques</button>
+    <button onclick="responder('pregunta7', 'criptografia', 'pregunta8')">La protección de información mediante cifrado</button>
+    <button onclick="responder('pregunta7', 'codigo', 'pregunta8')">Auditar código para seguridad</button>
+    <button onclick="responder('pregunta7', 'ciberinteligencia', 'pregunta8')">Identificación de amenazas a través de análisis de datos</button>
+    <button onclick="responder('pregunta7', 'malware', 'pregunta8')">Prevención y eliminación de malware</button>
+    <button onclick="responder('pregunta7', 'infosec', 'pregunta8')">Aplicar políticas de seguridad de la información</button>
+</div>
+
+<!-- Pregunta 8 -->
+<div id="pregunta8" class="hidden">
+    <h3>¿Te resulta más atractivo...?</h3>
+    <button onclick="responder('pregunta8', 'redes', 'pregunta9')">Monitorear sistemas en busca de amenazas</button>
+    <button onclick="responder('pregunta8', 'pentesting', 'pregunta9')">Realizar pruebas para simular ciberataques</button>
+    <button onclick="responder('pregunta8', 'forense', 'pregunta9')">Recopilar evidencias post-ataque</button>
+    <button onclick="responder('pregunta8', 'criptografia', 'pregunta9')">Desarrollar métodos de cifrado para proteger la información</button>
+    <button onclick="responder('pregunta8', 'codigo', 'pregunta9')">Auditar y revisar código para evitar vulnerabilidades</button>
+    <button onclick="responder('pregunta8', 'ciberinteligencia', 'pregunta9')">Estudiar tendencias para anticipar ataques</button>
+    <button onclick="responder('pregunta8', 'malware', 'pregunta9')">Detectar y neutralizar malware</button>
+    <button onclick="responder('pregunta8', 'infosec', 'pregunta9')">Supervisar políticas de seguridad de la información</button>
+</div>
+
+<!-- Pregunta 9 -->
+<div id="pregunta9" class="hidden">
+    <h3>¿Qué enfoque consideras más valioso para proteger activos digitales?</h3>
+    <button onclick="responder('pregunta9', 'redes', 'pregunta10')">Proteger las redes de comunicaciones</button>
+    <button onclick="responder('pregunta9', 'pentesting', 'pregunta10')">Detectar vulnerabilidades antes de que sean explotadas</button>
+    <button onclick="responder('pregunta9', 'forense', 'pregunta10')">Recuperar información después de un ataque</button>
+    <button onclick="responder('pregunta9', 'criptografia', 'pregunta10')">Mantener la confidencialidad mediante encriptación</button>
+    <button onclick="responder('pregunta9', 'codigo', 'pregunta10')">Asegurar que el código fuente sea seguro</button>
+    <button onclick="responder('pregunta9', 'ciberinteligencia', 'pregunta10')">Analizar datos para anticipar ciberamenazas</button>
+    <button onclick="responder('pregunta9', 'malware', 'pregunta10')">Identificar y eliminar malware</button>
+    <button onclick="responder('pregunta9', 'infosec', 'pregunta10')">Implementar políticas de seguridad para proteger la información</button>
+</div>
+
+<!-- Pregunta 10 -->
+<div id="pregunta10" class="hidden">
+    <h3>¿Qué te parece más importante dentro de un equipo de ciberseguridad?</h3>
+    <button onclick="responder('pregunta10', 'redes', 'pregunta11')">Tener una infraestructura de red sólida</button>
+    <button onclick="responder('pregunta10', 'pentesting', 'pregunta11')">Realizar auditorías de seguridad</button>
+    <button onclick="responder('pregunta10', 'forense', 'pregunta11')">Tener capacidad de respuesta ante incidentes</button>
+    <button onclick="responder('pregunta10', 'criptografia', 'pregunta11')">Desarrollar soluciones criptográficas innovadoras</button>
+    <button onclick="responder('pregunta10', 'codigo', 'pregunta11')">Asegurar la seguridad del código</button>
+    <button onclick="responder('pregunta10', 'ciberinteligencia', 'pregunta11')">Monitorizar datos para detectar amenazas</button>
+    <button onclick="responder('pregunta10', 'malware', 'pregunta11')">Proteger los sistemas contra malware</button>
+    <button onclick="responder('pregunta10', 'infosec', 'pregunta11')">Aplicar y supervisar políticas de seguridad</button>
+</div>
+
+<!-- Pregunta 11 -->
+<div id="pregunta11" class="hidden">
+    <h3>¿Cómo prefieres abordar un problema de ciberseguridad?</h3>
+    <button onclick="responder('pregunta11', 'redes', 'pregunta12')">Prevenirlo desde la infraestructura</button>
+    <button onclick="responder('pregunta11', 'pentesting', 'pregunta12')">Simular ataques para identificar fallos</button>
+    <button onclick="responder('pregunta11', 'forense', 'pregunta12')">Investigar una vez ha ocurrido</button>
+    <button onclick="responder('pregunta11', 'criptografia', 'pregunta12')">Encriptar la información de forma segura</button>
+    <button onclick="responder('pregunta11', 'codigo', 'pregunta12')">Corregir vulnerabilidades de código</button>
+    <button onclick="responder('pregunta11', 'ciberinteligencia', 'pregunta12')">Detectar ataques a través de análisis de datos</button>
+    <button onclick="responder('pregunta11', 'malware', 'pregunta12')">Identificar y aislar malware en los sistemas</button>
+    <button onclick="responder('pregunta11', 'infosec', 'pregunta12')">Monitorear políticas y auditorías de seguridad</button>
+</div>
+
+<!-- Pregunta 12 -->
+<div id="pregunta12" class="hidden">
+    <h3>¿Qué aspecto prefieres estudiar más a fondo?</h3>
+    <button onclick="responder('pregunta12', 'redes', 'pregunta13')">Protocolos de seguridad en redes</button>
+    <button onclick="responder('pregunta12', 'pentesting', 'pregunta13')">Revisión de seguridad en aplicaciones</button>
+    <button onclick="responder('pregunta12', 'forense', 'pregunta13')">Técnicas de análisis forense</button>
+    <button onclick="responder('pregunta12', 'criptografia', 'pregunta13')">Métodos criptográficos avanzados</button>
+    <button onclick="responder('pregunta12', 'codigo', 'pregunta13')">Desarrollo de software seguro</button>
+    <button onclick="responder('pregunta12', 'ciberinteligencia', 'pregunta13')">Investigación y predicción de amenazas</button>
+    <button onclick="responder('pregunta12', 'malware', 'pregunta13')">Técnicas avanzadas de análisis de malware</button>
+    <button onclick="responder('pregunta12', 'infosec', 'pregunta13')">Implementación y auditoría de políticas de seguridad</button>
+</div>
+
+<!-- Pregunta 13 -->
+<div id="pregunta13" class="hidden">
+    <h3>¿Qué aspecto te resulta más desafiante dentro de la ciberseguridad?</h3>
+    <button onclick="responder('pregunta13', 'redes', 'pregunta14')">Mantener redes seguras ante ataques</button>
+    <button onclick="responder('pregunta13', 'pentesting', 'pregunta14')">Encontrar vulnerabilidades antes que los atacantes</button>
+    <button onclick="responder('pregunta13', 'forense', 'pregunta14')">Analizar un ataque después de que ha ocurrido</button>
+    <button onclick="responder('pregunta13', 'criptografia', 'pregunta14')">Asegurar la privacidad mediante encriptación</button>
+    <button onclick="responder('pregunta13', 'codigo', 'pregunta14')">Desarrollar código con estándares de seguridad</button>
+    <button onclick="responder('pregunta13', 'ciberinteligencia', 'pregunta14')">Anticipar ataques mediante inteligencia</button>
+    <button onclick="responder('pregunta13', 'malware', 'pregunta14')">Prevenir y estudiar el comportamiento de malware</button>
+    <button onclick="responder('pregunta13', 'infosec', 'pregunta14')">Aplicar políticas de seguridad efectivas</button>
+</div>
+
+<!-- Pregunta 14 -->
+<div id="pregunta14" class="hidden">
+    <h3>¿Cómo prefieres resolver problemas en un entorno de trabajo?</h3>
+    <button onclick="responder('pregunta14', 'redes', 'pregunta15')">Trabajando en equipo para asegurar las redes</button>
+    <button onclick="responder('pregunta14', 'pentesting', 'pregunta15')">Realizando pruebas constantes para identificar fallos</button>
+    <button onclick="responder('pregunta14', 'forense', 'pregunta15')">Colaborando en la investigación forense</button>
+    <button onclick="responder('pregunta14', 'criptografia', 'pregunta15')">Creando soluciones para proteger la información</button>
+    <button onclick="responder('pregunta14', 'codigo', 'pregunta15')">Escribiendo código seguro para aplicaciones críticas</button>
+    <button onclick="responder('pregunta14', 'ciberinteligencia', 'pregunta15')">Colaborando en análisis de amenazas</button>
+    <button onclick="responder('pregunta14', 'malware', 'pregunta15')">Estudiando el impacto del malware</button>
+    <button onclick="responder('pregunta14', 'infosec', 'pregunta15')">Supervisando la implementación de políticas de seguridad</button>
+</div>
+
+<!-- Pregunta 15 -->
+<div id="pregunta15" class="hidden">
+    <h3>¿Qué área consideras más innovadora en ciberseguridad?</h3>
+    <button onclick="responder('pregunta15', 'redes', 'resultado')">Seguridad de redes y comunicaciones</button>
+    <button onclick="responder('pregunta15', 'pentesting', 'resultado')">Pentesting y hacking ético</button>
+    <button onclick="responder('pregunta15', 'forense', 'resultado')">Análisis forense y recuperación de datos</button>
+    <button onclick="responder('pregunta15', 'criptografia', 'resultado')">Criptografía y protección de datos</button>
+    <button onclick="responder('pregunta15', 'codigo', 'resultado')">Desarrollo de software con alta seguridad</button>
+    <button onclick="responder('pregunta15', 'ciberinteligencia', 'resultado')">Predicción de ataques mediante inteligencia</button>
+    <button onclick="responder('pregunta15', 'malware', 'resultado')">Prevención avanzada de malware</button>
+    <button onclick="responder('pregunta15', 'infosec', 'resultado')">Implementación avanzada de políticas de seguridad</button>
+</div>
+
+
+    <!-- Agregar más preguntas... -->
+
+    <!-- Resultado final -->
+<div id="resultado" class="hidden">
+    <h3>Tu posible enfoque es:</h3>
+    <p id="enfoque"></p>
+
+    <!-- Aquí se mostrará la estadística con los puntos obtenidos -->
+    <h4>Puntos por área:</h4>
+    <ul id="estadisticas"></ul>
+</div>
+
+<script>
+    let respuestas = [];
+    let modoOscuro = false; // Variable para el tema
+
+    // Función para iniciar el test
+    function iniciarTest() {
+        document.getElementById('inicio').classList.add('hidden');
+        document.getElementById('pregunta1').classList.remove('hidden');
+    }
+
+    // Función para guardar respuestas y avanzar
+    function responder(preguntaId, respuesta, siguientePreguntaId) {
+        respuestas.push(respuesta); // Guarda la respuesta
+        document.getElementById(preguntaId).classList.add('hidden'); // Oculta la pregunta actual
+        if (siguientePreguntaId === 'resultado') {
+            mostrarResultado();
+        } else {
+            document.getElementById(siguientePreguntaId).classList.remove('hidden'); // Muestra la siguiente pregunta
+        }
+    }
+
+    // Función para mostrar el resultado
+function mostrarResultado() {
+    let estadisticas = {
+        'Seguridad en Redes': 0,
+        'Pentesting': 0,
+        'Seguridad Forense': 0,
+        'Criptografía y Esteganografía': 0,
+        'Código Seguro': 0,
+        'Ciberinteligencia': 0,
+        'Análisis de Malware': 0,
+        'Seguridad de la Información': 0
+    };
+
+    // Contar respuestas para cada área
+    respuestas.forEach(respuesta => {
+        if (respuesta === 'redes') {
+            estadisticas['Seguridad en Redes']++;
+        } else if (respuesta === 'pentesting') {
+            estadisticas['Pentesting']++;
+        } else if (respuesta === 'forense') {
+            estadisticas['Seguridad Forense']++;
+        } else if (respuesta === 'criptografia') {
+            estadisticas['Criptografía y Esteganografía']++;
+        } else if (respuesta === 'codigo') {
+            estadisticas['Código Seguro']++;
+        } else if (respuesta === 'ciberinteligencia') {
+            estadisticas['Ciberinteligencia']++;
+        } else if (respuesta === 'malware') {
+            estadisticas['Análisis de Malware']++;
+        } else if (respuesta === 'infosec') {
+            estadisticas['Seguridad de la Información']++;
+        }
+    });
+
+    // Determinar el enfoque con más puntos
+    let enfoque = '';
+    let maxPuntos = 0;
+    for (const area in estadisticas) {
+        if (estadisticas[area] > maxPuntos) {
+            maxPuntos = estadisticas[area];
+            enfoque = area;
+        }
+    }
+
+    // Mostrar el enfoque principal
+    document.getElementById('enfoque').innerText = enfoque;
+
+    // Mostrar las estadísticas
+    let estadisticasHTML = '';
+    for (const area in estadisticas) {
+        estadisticasHTML += `<li>${area}: ${estadisticas[area]} puntos</li>`;
+    }
+    document.getElementById('estadisticas').innerHTML = estadisticasHTML;
+
+    // Mostrar la sección de resultados
+    document.getElementById('resultado').classList.remove('hidden');
+}
+
+
+    // Función para cambiar el tema entre claro y oscuro
+    function cambiarTema() {
+        modoOscuro = !modoOscuro;
+        if (modoOscuro) {
+            document.body.style.backgroundColor = '#000';
+            document.body.style.color = '#fff';
+            document.querySelectorAll('button').forEach(boton => {
+                boton.style.backgroundColor = '#fff';
+                boton.style.color = '#000';
+            });
+            document.querySelector('.theme-toggle').innerText = 'Cambiar a tema claro';
+        } else {
+            document.body.style.backgroundColor = '#fff';
+            document.body.style.color = '#000';
+            document.querySelectorAll('button').forEach(boton => {
+                boton.style.backgroundColor = '#000';
+                boton.style.color = '#fff';
+            });
+            document.querySelector('.theme-toggle').innerText = 'Cambiar a tema oscuro';
+        }
+    }
+
+    // Crear el botón de "Mi perfil en Platzi"
+    function crearBotonPerfilPlatzi() {
+        var botonPlatzi = document.createElement('button');
+        botonPlatzi.innerHTML = 'Mi perfil en Platzi';
+        botonPlatzi.style.position = 'absolute';
+        botonPlatzi.style.top = '20px';
+        botonPlatzi.style.left = '15px';
+        botonPlatzi.style.backgroundColor = '#000';
+        botonPlatzi.style.color = '#fff';
+        botonPlatzi.style.padding = '5px';
+        botonPlatzi.style.borderRadius = '0px';
+        botonPlatzi.style.cursor = 'pointer';
+        botonPlatzi.style.border = 'none';
+
+        // Agregar funcionalidad de enlace al botón
+        botonPlatzi.onclick = function() {
+            window.open('https://platzi.com/p/eriickbiersack2/', '_blank');
+        };
+
+        // Añadir el botón al body del documento
+        document.body.appendChild(botonPlatzi);
+    }
+
+    // Llamar a la función para crear el botón
+    crearBotonPerfilPlatzi();
+
+</script>
+
+
+
+</body>
+</html>
